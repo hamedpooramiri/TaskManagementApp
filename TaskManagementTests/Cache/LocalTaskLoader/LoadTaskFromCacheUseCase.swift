@@ -16,13 +16,12 @@ final class LoadTaskFromCacheUseCase: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
      
-    func test_load_cacheRetrieveError() {
+    func test_load_onCacheRetrieveErrorDeliverError() {
         let (store, sut) = makeSUT()
         let expectedError = anyNSError()
         expect(sut, toCompleteWithResult: .failure(expectedError)) {
             store.completeRetrieve(with: expectedError)
         }
-        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
 
     func test_load_emptyCache_DeliversNoTaskItem() {
@@ -30,6 +29,11 @@ final class LoadTaskFromCacheUseCase: XCTestCase {
         expect(sut, toCompleteWithResult: .success([])) {
             store.completeRetrieveWithEmptyCache()
         }
+    }
+
+    func test_load_hasNoSideEffectOnCache() {
+        let (store, sut) = makeSUT()
+        sut.load(completion: {_ in })
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
 

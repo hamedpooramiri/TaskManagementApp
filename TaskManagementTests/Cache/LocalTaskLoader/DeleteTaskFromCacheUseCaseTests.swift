@@ -6,30 +6,73 @@
 //
 
 import XCTest
+import TaskManagementApp
 
 final class DeleteTaskFromCacheUseCaseTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_init_notDeleteTaskOnCreation() {
+        let (store, _) = makeSUT()
+        XCTAssertEqual(store.receivedMessages, [])
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_delete_onCacheDeletionSuccessfullyDeliverNoError() {
+        let (store, sut) = makeSUT()
+        expect(sut, withTask: uniqueTaskItem(), toCompleteWithError: nil) {
+            store.completeDeleteSuccessfully()
         }
     }
+
+    func test_delete_onCacheDeletionErrorDeliverError() {
+        let (store, sut) = makeSUT()
+        let expectedError = anyNSError()
+        expect(sut, withTask: uniqueTaskItem(), toCompleteWithError: expectedError) {
+            store.completeDelete(with: expectedError)
+        }
+    }
+
+    func test_delete_hasNoSideEffectOnCache() {
+        let (store, sut) = makeSUT()
+        let taskItem = uniqueLocalTaskItem()
+        sut.delete(taskItem.model, completion: {_ in })
+        XCTAssertEqual(store.receivedMessages, [.deleteTask])
+    }
+
+    func test_delete_afterDeallocatingSUTNotDeliverDeletionError() {
+        let store = TaskStoreSpy()
+        var sut: LocalTaskLoader? = LocalTaskLoader(store: store)
+        var capturedResults = [LocalTaskLoader.DeleteResult]()
+        sut?.delete(uniqueTaskItem()) { capturedResults.append($0) }
+        sut = nil
+        store.completeDelete(with: anyNSError())
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+
+    //MARK: - Helpers
+
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (store: TaskStoreSpy, sut: LocalTaskLoader){
+        let store = TaskStoreSpy()
+        let sut = LocalTaskLoader(store: store)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(store, file: file, line: line)
+        return (store, sut)
+    }
+
+    func expect(_ sut: LocalTaskLoader, withTask task: TaskItem, toCompleteWithError expectedError: NSError?, when action: @escaping ()-> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for Deleting")
+        var capturedError: Error?
+        sut.delete(task) { result in
+            switch result {
+            case .failure(let error):
+                capturedError = error
+            default:
+                break
+            }
+            exp.fulfill()
+        }
+        action()
+        wait(for: [exp])
+        XCTAssertEqual(capturedError as? NSError, expectedError, file: file, line: line)
+    }
+
 
 }

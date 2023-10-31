@@ -10,17 +10,31 @@ import TaskManagementApp
 
 final class SaveTaskToCacheUseCaseTests: XCTestCase {
 
-    func test_notSaveTaskToTheCacheOnCreation() {
+    func test_init_notSaveTaskOnCreation() {
         let (store, _) = makeSUT()
         XCTAssertEqual(store.receivedMessages, [])
     }
     
-    func test_save_cacheInsertionError() {
+    func test_save_onCacheSaveSuccessfullyDeliverNoError() {
+        let (store, sut) = makeSUT()
+        expect(sut, withTask: uniqueTaskItem(), toCompleteWithError: nil) {
+            store.completeInsertionSuccessfully()
+        }
+    }
+
+    func test_save_onCacheInsertionErrorDeliverError() {
         let (store, sut) = makeSUT()
         let expectedError = anyNSError()
         expect(sut, withTask: uniqueTaskItem(), toCompleteWithError: expectedError) {
             store.completeInsertion(with: expectedError)
         }
+    }
+
+    func test_save_hasNoSideEffectOnCache() {
+        let (store, sut) = makeSUT()
+        let taskItem = uniqueLocalTaskItem()
+        sut.save(taskItem.model, completion: {_ in })
+        XCTAssertEqual(store.receivedMessages, [.insertTask(task: taskItem.local)])
     }
 
     func test_save_afterDeallocatingSUTNotDeliverInsertionError() {
