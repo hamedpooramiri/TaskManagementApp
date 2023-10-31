@@ -136,6 +136,7 @@
 		1CA2DB1F2AF160EA006F5721 /* TaskManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DB8F2AF1AC3A006F5721 /* UI */,
 				1CA2DB352AF165D1006F5721 /* Cache */,
 				1CA2DB2E2AF16375006F5721 /* Feature */,
 				1CA2DB202AF160EA006F5721 /* TaskManagementAppApp.swift */,
@@ -275,6 +276,13 @@
 				1CA2DB862AF1A647006F5721 /* TaskCacheIntegrationTests.swift */,
 			);
 			path = TaskCacheIntegrationTests;
+			sourceTree = "<group>";
+		};
+		1CA2DB8F2AF1AC3A006F5721 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

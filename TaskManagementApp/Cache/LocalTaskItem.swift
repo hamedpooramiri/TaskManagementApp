@@ -22,12 +22,6 @@ public struct LocalTaskItem: Equatable {
 
 }
 
-extension Array where Element == TaskItem {
-    func toLocal() -> [LocalTaskItem] {
-        map { LocalTaskItem(id: $0.id, title: $0.title, description: $0.description, isCompleted: $0.isCompleted) }
-    }
-}
-
 extension Array where Element == LocalTaskItem {
     func toModel() -> [TaskItem] {
         map { TaskItem(id: $0.id, title: $0.title, description: $0.description, isCompleted: $0.isCompleted) }
