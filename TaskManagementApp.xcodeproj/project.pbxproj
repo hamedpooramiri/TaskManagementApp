@@ -18,7 +18,18 @@
 		1CA2DB3D2AF1675A006F5721 /* LocalTaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB3C2AF1675A006F5721 /* LocalTaskItem.swift */; };
 		1CA2DB3F2AF167FC006F5721 /* LocalTaskLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB3E2AF167FC006F5721 /* LocalTaskLoader.swift */; };
 		1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB402AF17007006F5721 /* TaskDeleter.swift */; };
+		1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1CA2DB572AF17438006F5721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CA2DB152AF160EA006F5721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CA2DB1C2AF160EA006F5721;
+			remoteInfo = TaskManagementApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1CA2DB1D2AF160EA006F5721 /* TaskManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,10 +44,19 @@
 		1CA2DB3C2AF1675A006F5721 /* LocalTaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskItem.swift; sourceTree = "<group>"; };
 		1CA2DB3E2AF167FC006F5721 /* LocalTaskLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTaskLoader.swift; sourceTree = "<group>"; };
 		1CA2DB402AF17007006F5721 /* TaskDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDeleter.swift; sourceTree = "<group>"; };
+		1CA2DB532AF17438006F5721 /* TaskManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1CA2DB1A2AF160EA006F5721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CA2DB502AF17438006F5721 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB1F2AF160EA006F5721 /* TaskManagementApp */,
+				1CA2DB542AF17438006F5721 /* TaskManagementTests */,
 				1CA2DB1E2AF160EA006F5721 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB1D2AF160EA006F5721 /* TaskManagementApp.app */,
+				1CA2DB532AF17438006F5721 /* TaskManagementTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +158,14 @@
 			path = TaskStore;
 			sourceTree = "<group>";
 		};
+		1CA2DB542AF17438006F5721 /* TaskManagementTests */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */,
+			);
+			path = TaskManagementTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,6 +186,24 @@
 			productReference = 1CA2DB1D2AF160EA006F5721 /* TaskManagementApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1CA2DB522AF17438006F5721 /* TaskManagementTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CA2DB592AF17438006F5721 /* Build configuration list for PBXNativeTarget "TaskManagementTests" */;
+			buildPhases = (
+				1CA2DB4F2AF17438006F5721 /* Sources */,
+				1CA2DB502AF17438006F5721 /* Frameworks */,
+				1CA2DB512AF17438006F5721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1CA2DB582AF17438006F5721 /* PBXTargetDependency */,
+			);
+			name = TaskManagementTests;
+			productName = TaskManagementTests;
+			productReference = 1CA2DB532AF17438006F5721 /* TaskManagementTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,6 +216,10 @@
 				TargetAttributes = {
 					1CA2DB1C2AF160EA006F5721 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					1CA2DB522AF17438006F5721 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 1CA2DB1C2AF160EA006F5721;
 					};
 				};
 			};
@@ -185,6 +237,7 @@
 			projectRoot = "";
 			targets = (
 				1CA2DB1C2AF160EA006F5721 /* TaskManagementApp */,
+				1CA2DB522AF17438006F5721 /* TaskManagementTests */,
 			);
 		};
 /* End PBXProject section */
@@ -196,6 +249,13 @@
 			files = (
 				1CA2DB282AF160EB006F5721 /* Preview Assets.xcassets in Resources */,
 				1CA2DB252AF160EB006F5721 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1CA2DB512AF17438006F5721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +278,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CA2DB4F2AF17438006F5721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1CA2DB582AF17438006F5721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CA2DB1C2AF160EA006F5721 /* TaskManagementApp */;
+			targetProxy = 1CA2DB572AF17438006F5721 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1CA2DB292AF160EB006F5721 /* Debug */ = {
@@ -393,6 +469,42 @@
 			};
 			name = Release;
 		};
+		1CA2DB5A2AF17438006F5721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LS4DW8C9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hamedAmiri.TaskManagementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskManagementApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskManagementApp";
+			};
+			name = Debug;
+		};
+		1CA2DB5B2AF17438006F5721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2LS4DW8C9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = hamedAmiri.TaskManagementTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskManagementApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskManagementApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -410,6 +522,15 @@
 			buildConfigurations = (
 				1CA2DB2C2AF160EB006F5721 /* Debug */,
 				1CA2DB2D2AF160EB006F5721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CA2DB592AF17438006F5721 /* Build configuration list for PBXNativeTarget "TaskManagementTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CA2DB5A2AF17438006F5721 /* Debug */,
+				1CA2DB5B2AF17438006F5721 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
