@@ -19,6 +19,7 @@
 		1CA2DB3F2AF167FC006F5721 /* LocalTaskLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB3E2AF167FC006F5721 /* LocalTaskLoader.swift */; };
 		1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB402AF17007006F5721 /* TaskDeleter.swift */; };
 		1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */; };
+		1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		1CA2DB402AF17007006F5721 /* TaskDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDeleter.swift; sourceTree = "<group>"; };
 		1CA2DB532AF17438006F5721 /* TaskManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementTests.swift; sourceTree = "<group>"; };
+		1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,9 +163,18 @@
 		1CA2DB542AF17438006F5721 /* TaskManagementTests */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DB5C2AF17582006F5721 /* Helper */,
 				1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */,
 			);
 			path = TaskManagementTests;
+			sourceTree = "<group>";
+		};
+		1CA2DB5C2AF17582006F5721 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */,
+				1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
