@@ -32,6 +32,8 @@
 		1CA2DB762AF18DEF006F5721 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */; };
 		1CA2DB782AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */; };
 		1CA2DB7B2AF195C2006F5721 /* CoreDataTaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */; };
+		1CA2DB7D2AF196A1006F5721 /* TaskStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7C2AF196A1006F5721 /* TaskStoreSpecs.swift */; };
+		1CA2DB7F2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7E2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataTaskStore+TaskStore.swift"; sourceTree = "<group>"; };
 		1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTaskStoreTests.swift; sourceTree = "<group>"; };
+		1CA2DB7C2AF196A1006F5721 /* TaskStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreSpecs.swift; sourceTree = "<group>"; };
+		1CA2DB7E2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+TaskStoreSpecs.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */,
+				1CA2DB7C2AF196A1006F5721 /* TaskStoreSpecs.swift */,
+				1CA2DB7E2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift */,
 			);
 			path = TaskStore;
 			sourceTree = "<group>";
@@ -367,8 +373,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA2DB6D2AF17C92006F5721 /* CacheHelper.swift in Sources */,
+				1CA2DB7F2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift in Sources */,
 				1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */,
 				1CA2DB692AF17744006F5721 /* TaskStoreSpy.swift in Sources */,
+				1CA2DB7D2AF196A1006F5721 /* TaskStoreSpecs.swift in Sources */,
 				1CA2DB6B2AF17A13006F5721 /* SharedTestHelpers.swift in Sources */,
 				1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */,
 				1CA2DB7B2AF195C2006F5721 /* CoreDataTaskStoreTests.swift in Sources */,
