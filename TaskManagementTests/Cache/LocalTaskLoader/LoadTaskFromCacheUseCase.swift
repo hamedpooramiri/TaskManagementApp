@@ -6,30 +6,69 @@
 //
 
 import XCTest
+import TaskManagementApp
 
 final class LoadTaskFromCacheUseCase: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_init_notLoadTasksOnCreation() {
+        let store = TaskStoreSpy()
+        let _ = LocalTaskLoader(store: store)
+        XCTAssertEqual(store.receivedMessages, [])
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+     
+    func test_load_cacheRetrieveError() {
+        let (store, sut) = makeSUT()
+        let expectedError = anyNSError()
+        expect(sut, toCompleteWithResult: .failure(expectedError)) {
+            store.completeRetrieve(with: expectedError)
         }
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
+
+    func test_load_emptyCache_DeliversNoTaskItem() {
+        let (store, sut) = makeSUT()
+        expect(sut, toCompleteWithResult: .success([])) {
+            store.completeRetrieveWithEmptyCache()
+        }
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+
+    func test_load_afterDeallocationOfSUT_notDeliverResult() {
+        let store = TaskStoreSpy()
+        var sut: LocalTaskLoader? = LocalTaskLoader(store: store)
+        var capturedResult = [TaskLoader.Result]()
+        sut?.load { capturedResult.append($0) }
+        sut = nil
+        store.completeRetrieveWithEmptyCache()
+        XCTAssertTrue(capturedResult.isEmpty)
+    }
+
+    // MARK: - Helper
+    
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (store: TaskStoreSpy, sut: LocalTaskLoader){
+        let store = TaskStoreSpy()
+        let sut = LocalTaskLoader(store: store)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(store, file: file, line: line)
+        return (store, sut)
+    }
+
+    func expect(_ sut: LocalTaskLoader, toCompleteWithResult expectedResult: TaskLoader.Result, when action: @escaping ()-> Void, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for saving")
+        sut.load { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedItems), .success(expectedItems)):
+                XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
+            case let (.failure(receivedError as NSError), .failure(expectedError as NSError)):
+                XCTAssertEqual(receivedError, expectedError, file: file, line: line)
+            default:
+                XCTFail("expect to get result \(expectedResult) but got \(receivedResult)", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        action()
+        wait(for: [exp])
+    }
+
 
 }
