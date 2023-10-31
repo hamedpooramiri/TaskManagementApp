@@ -22,7 +22,7 @@
 		1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */; };
 		1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */; };
 		1CA2DB642AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */; };
-		1CA2DB662AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */; };
+		1CA2DB662AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB652AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift */; };
 		1CA2DB692AF17744006F5721 /* TaskStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB682AF17744006F5721 /* TaskStoreSpy.swift */; };
 		1CA2DB6B2AF17A13006F5721 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6A2AF17A13006F5721 /* SharedTestHelpers.swift */; };
 		1CA2DB6D2AF17C92006F5721 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */; };
@@ -56,7 +56,7 @@
 		1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTaskFromCacheUseCase.swift; sourceTree = "<group>"; };
 		1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTaskToCacheUseCaseTests.swift; sourceTree = "<group>"; };
-		1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskToCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		1CA2DB652AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		1CA2DB682AF17744006F5721 /* TaskStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreSpy.swift; sourceTree = "<group>"; };
 		1CA2DB6A2AF17A13006F5721 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */,
 				1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */,
-				1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */,
+				1CA2DB652AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift */,
 			);
 			path = LocalTaskLoader;
 			sourceTree = "<group>";
@@ -342,7 +342,7 @@
 				1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */,
 				1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				1CA2DB642AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift in Sources */,
-				1CA2DB662AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift in Sources */,
+				1CA2DB662AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
