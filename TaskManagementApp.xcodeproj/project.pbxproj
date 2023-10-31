@@ -26,6 +26,7 @@
 		1CA2DB692AF17744006F5721 /* TaskStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB682AF17744006F5721 /* TaskStoreSpy.swift */; };
 		1CA2DB6B2AF17A13006F5721 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6A2AF17A13006F5721 /* SharedTestHelpers.swift */; };
 		1CA2DB6D2AF17C92006F5721 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */; };
+		1CA2DB702AF188A9006F5721 /* TaskStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6E2AF188A9006F5721 /* TaskStore.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		1CA2DB682AF17744006F5721 /* TaskStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStoreSpy.swift; sourceTree = "<group>"; };
 		1CA2DB6A2AF17A13006F5721 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheHelper.swift; sourceTree = "<group>"; };
+		1CA2DB6F2AF188A9006F5721 /* TaskStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskStore.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		1CA2DB372AF1661D006F5721 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DB6E2AF188A9006F5721 /* TaskStore.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				1CA2DB342AF1654D006F5721 /* TaskSaver.swift in Sources */,
 				1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */,
 				1CA2DB302AF1640E006F5721 /* TaskItem.swift in Sources */,
+				1CA2DB702AF188A9006F5721 /* TaskStore.xcdatamodeld in Sources */,
 				1CA2DB3F2AF167FC006F5721 /* LocalTaskLoader.swift in Sources */,
 				1CA2DB212AF160EA006F5721 /* TaskManagementAppApp.swift in Sources */,
 				1CA2DB3D2AF1675A006F5721 /* LocalTaskItem.swift in Sources */,
@@ -596,6 +600,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1CA2DB6E2AF188A9006F5721 /* TaskStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1CA2DB6F2AF188A9006F5721 /* TaskStore.xcdatamodel */,
+			);
+			currentVersion = 1CA2DB6F2AF188A9006F5721 /* TaskStore.xcdatamodel */;
+			path = TaskStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1CA2DB152AF160EA006F5721 /* Project object */;
 }
