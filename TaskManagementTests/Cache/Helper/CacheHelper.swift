@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import TaskManagementApp
+
+func uniqueTaskItem() -> TaskItem {
+    TaskItem(id: UUID(), title: "any description", description: "any location", isCompleted: false)
+}
