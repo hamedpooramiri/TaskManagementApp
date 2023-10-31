@@ -24,7 +24,7 @@ class TaskStoreSpy: TaskStore {
     
     
     
-    func deleteTask(completion: @escaping DeleteCompletion) {
+    func delete(task: LocalTaskItem, completion: @escaping DeleteCompletion) {
         receivedMessages.append(.deleteTask)
         capturedDeleteCompletions.append(completion)
     }

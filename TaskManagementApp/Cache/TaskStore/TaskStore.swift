@@ -18,7 +18,7 @@ public protocol TaskStore {
     typealias RetrieveResult = Result<[LocalTaskItem]?, Error>
     typealias retrieveCompletion = (RetrieveResult) -> Void
 
-    func deleteTask(completion: @escaping DeleteCompletion)
+    func delete(task: LocalTaskItem, completion: @escaping DeleteCompletion)
     func insert(task: LocalTaskItem, completion: @escaping InsertCompletion)
     func retrieve(completion: @escaping retrieveCompletion)
 }
