@@ -35,6 +35,8 @@
 		1CA2DB7D2AF196A1006F5721 /* TaskStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7C2AF196A1006F5721 /* TaskStoreSpecs.swift */; };
 		1CA2DB7F2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7E2AF196B7006F5721 /* XCTestCase+TaskStoreSpecs.swift */; };
 		1CA2DB872AF1A647006F5721 /* TaskCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB862AF1A647006F5721 /* TaskCacheIntegrationTests.swift */; };
+		1CA2DB8D2AF1A6E7006F5721 /* CacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */; };
+		1CA2DB8E2AF1A98E006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -447,7 +449,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA2DB8D2AF1A6E7006F5721 /* CacheHelper.swift in Sources */,
 				1CA2DB872AF1A647006F5721 /* TaskCacheIntegrationTests.swift in Sources */,
+				1CA2DB8E2AF1A98E006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

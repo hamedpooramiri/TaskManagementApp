@@ -6,30 +6,98 @@
 //
 
 import XCTest
+import TaskManagementApp
 
 final class TaskCacheIntegrationTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        setUpEmptyStoreState()
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        super.tearDown()
+        undoStoreSideEffects()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_load_emptyCache_deliversNoItems() {
+        let sut = makeSUT()
+        expect(sut, toLoad: [])
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_load_nonEmptyCache_seprateInstanceDeliverTasks() {
+        let insertSut = makeSUT()
+        let expectedTask = uniqueLocalTaskItem().model
+        save(task: expectedTask, with: insertSut)
+
+        let loadSut = makeSUT()
+        expect(loadSut, toLoad: [expectedTask])
+    }
+
+    func test_save_addTasksToPreviousSavedTasksBySeprateInstance() {
+        let sutToPerformFirstSave = makeSUT()
+        let sutToPerformLastSave = makeSUT()
+        let sutToPerformLoad = makeSUT()
+        let firstTaskItem = uniqueLocalTaskItem().model
+        let lastTaskItem = uniqueLocalTaskItem().model
+        
+        save(task: firstTaskItem, with: sutToPerformFirstSave)
+        save(task: lastTaskItem, with: sutToPerformLastSave)
+        expect(sutToPerformLoad, toLoad: [firstTaskItem, lastTaskItem])
+    }
+
+    //MARK: Helpers
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> LocalTaskLoader {
+        let storeURL = storeURLForTest()
+        let store = try! CoreDataTaskStore(storeURL: storeURL)
+        let sut = LocalTaskLoader(store: store)
+        trackForMemoryLeaks(store, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+
+    func expect(_ sut: LocalTaskLoader, toLoad expectedTasks: [TaskItem], file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for load from cache")
+        sut.load { result in
+            switch result {
+            case let .success(recievedTasks):
+                XCTAssertEqual(recievedTasks, expectedTasks, "expected to get \(expectedTasks), but got \(recievedTasks)", file: file, line: line)
+            case let .failure(error):
+                XCTAssertNil(error, "expected to get success result, but got error \(error)", file: file, line: line)
+            }
+            exp.fulfill()
         }
+        wait(for: [exp], timeout: 1)
     }
 
+    func save(task: TaskItem, with sut: LocalTaskLoader, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for load from cache")
+        sut.save(task) { result  in
+            switch result {
+            case .failure(let error):
+                XCTAssertNil(error, "expect to save Data Successfully but got error: \(String(describing: error))", file: file, line: line)
+            default:
+                break
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
+    private func storeURLForTest() -> URL {
+        FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appending(path: "\(type(of: self)).store")
+    }
+
+    private func setUpEmptyStoreState() {
+        deleteStoreArtifacts()
+    }
+
+    private func undoStoreSideEffects() {
+        deleteStoreArtifacts()
+    }
+
+    private func deleteStoreArtifacts() {
+        try? FileManager.default.removeItem(at: storeURLForTest())
+    }
 }
+
