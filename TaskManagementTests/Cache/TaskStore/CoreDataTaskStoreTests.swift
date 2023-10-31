@@ -6,30 +6,67 @@
 //
 
 import XCTest
+import TaskManagementApp
 
-final class CoreDataTaskStoreTests: XCTestCase {
+final class CoreDataTaskStoreTests: XCTestCase, TaskStoreSpecs {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func test_retrieve_emptyStore_deliverEmpty() {
+        let sut = makeSUT()
+        assetThatRetrieveFromEmptyStoreDeliverEmpty(on: sut)
+    }
+    
+    func test_retrieve_emptyStore_hasNoSideEffectRetrieveTwice() {
+        let sut = makeSUT()
+        assetThatRetrieveFromEmptyStoreHasNoSideEffectRetrieveTwice(on: sut)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func test_retrieve_nonEmptyStore_deliverData() {
+        let sut = makeSUT()
+        assertThatRetrieveFromNonEmptyStoreDeliverData(on: sut)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_retrieve_nonEmptyStore_hasNoSideEffectOnRetrieveTwice() {
+        let sut = makeSUT()
+        assertThatRetrieveFromNonEmptyStoreHasNoSideEffectOnRetrieveTwice(on: sut)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_insert_toEmptyStore_addDataToStore() {
+        let sut = makeSUT()
+        assertThatInsertToEmptyStoreInsertData(on: sut)
+    }
+    
+    func test_insert_toNonEmptyStore_addDataToStore() {
+        let sut = makeSUT()
+        assertThatInsertToNonEmptyStoreAddDataToStore(on: sut)
+    }
+    
+    func test_delete_emptyStore_doNoting() {
+        let sut = makeSUT()
+        assertThatDeleteFromEmptyStoreDoNoting(on: sut)
+    }
+    
+    func test_delete_emptyStore_hasNoSideEffectOnStore() {
+        let sut = makeSUT()
+        assertThatDeleteFromEmptyStoreHasNoSideEffectOnStore(on: sut)
+    }
+    
+    func test_delete_nonEmptyStore_removeDataFromStore() {
+        let sut = makeSUT()
+        assertThatDeleteFromNonEmptyStoreRemoveDataFromStore(on: sut)
+    }
+    
+    func test_storeSideEffects_runSerially() {
+        let sut = makeSUT()
+        assertThatStoreHasNoSideEffectWhenRunSerially(on: sut)
+    }
+    
+    // MARK: Helper
+    
+    private func makeSUT(storeURL: URL? = nil, file: StaticString = #filePath, line: UInt = #line) -> TaskStore {
+        let storeURL = URL(filePath: "/dev/null")
+        let sut = try! CoreDataTaskStore(storeURL: storeURL)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
     }
 
 }
