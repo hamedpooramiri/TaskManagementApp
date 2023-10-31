@@ -30,6 +30,7 @@
 		1CA2DB722AF18A24006F5721 /* ManagedTaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB712AF18A24006F5721 /* ManagedTaskItem.swift */; };
 		1CA2DB742AF18D76006F5721 /* CoreDataTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB732AF18D76006F5721 /* CoreDataTaskStore.swift */; };
 		1CA2DB762AF18DEF006F5721 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */; };
+		1CA2DB782AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		1CA2DB712AF18A24006F5721 /* ManagedTaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedTaskItem.swift; sourceTree = "<group>"; };
 		1CA2DB732AF18D76006F5721 /* CoreDataTaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTaskStore.swift; sourceTree = "<group>"; };
 		1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
+		1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataTaskStore+TaskStore.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				1CA2DB712AF18A24006F5721 /* ManagedTaskItem.swift */,
 				1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */,
 				1CA2DB732AF18D76006F5721 /* CoreDataTaskStore.swift */,
+				1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				1CA2DB742AF18D76006F5721 /* CoreDataTaskStore.swift in Sources */,
 				1CA2DB322AF164CF006F5721 /* TaskLoader.swift in Sources */,
 				1CA2DB3B2AF166E3006F5721 /* TaskStore.swift in Sources */,
+				1CA2DB782AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift in Sources */,
 				1CA2DB342AF1654D006F5721 /* TaskSaver.swift in Sources */,
 				1CA2DB762AF18DEF006F5721 /* CoreDataHelpers.swift in Sources */,
 				1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */,
