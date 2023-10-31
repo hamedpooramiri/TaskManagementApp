@@ -31,6 +31,7 @@
 		1CA2DB742AF18D76006F5721 /* CoreDataTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB732AF18D76006F5721 /* CoreDataTaskStore.swift */; };
 		1CA2DB762AF18DEF006F5721 /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */; };
 		1CA2DB782AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */; };
+		1CA2DB7B2AF195C2006F5721 /* CoreDataTaskStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		1CA2DB732AF18D76006F5721 /* CoreDataTaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTaskStore.swift; sourceTree = "<group>"; };
 		1CA2DB752AF18DEF006F5721 /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		1CA2DB772AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataTaskStore+TaskStore.swift"; sourceTree = "<group>"; };
+		1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTaskStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			children = (
 				1CA2DB672AF17718006F5721 /* Helper */,
 				1CA2DB602AF1762B006F5721 /* LocalTaskLoader */,
+				1CA2DB792AF1950D006F5721 /* TaskStore */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -232,6 +235,14 @@
 				1CA2DB6C2AF17C92006F5721 /* CacheHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		1CA2DB792AF1950D006F5721 /* TaskStore */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB7A2AF195C2006F5721 /* CoreDataTaskStoreTests.swift */,
+			);
+			path = TaskStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +371,7 @@
 				1CA2DB692AF17744006F5721 /* TaskStoreSpy.swift in Sources */,
 				1CA2DB6B2AF17A13006F5721 /* SharedTestHelpers.swift in Sources */,
 				1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */,
+				1CA2DB7B2AF195C2006F5721 /* CoreDataTaskStoreTests.swift in Sources */,
 				1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				1CA2DB642AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift in Sources */,
 				1CA2DB662AF176D2006F5721 /* DeleteTaskFromCacheUseCaseTests.swift in Sources */,
