@@ -20,6 +20,9 @@
 		1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB402AF17007006F5721 /* TaskDeleter.swift */; };
 		1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */; };
 		1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */; };
+		1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */; };
+		1CA2DB642AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */; };
+		1CA2DB662AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		1CA2DB532AF17438006F5721 /* TaskManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagementTests.swift; sourceTree = "<group>"; };
 		1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTaskFromCacheUseCase.swift; sourceTree = "<group>"; };
+		1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTaskToCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskToCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB5C2AF17582006F5721 /* Helper */,
+				1CA2DB5F2AF17603006F5721 /* Cache */,
 				1CA2DB552AF17438006F5721 /* TaskManagementTests.swift */,
 			);
 			path = TaskManagementTests;
@@ -175,6 +182,24 @@
 				1CA2DB5D2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		1CA2DB5F2AF17603006F5721 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB602AF1762B006F5721 /* LocalTaskLoader */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		1CA2DB602AF1762B006F5721 /* LocalTaskLoader */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB612AF17662006F5721 /* LoadTaskFromCacheUseCase.swift */,
+				1CA2DB632AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift */,
+				1CA2DB652AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift */,
+			);
+			path = LocalTaskLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,7 +319,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA2DB562AF17438006F5721 /* TaskManagementTests.swift in Sources */,
+				1CA2DB622AF17662006F5721 /* LoadTaskFromCacheUseCase.swift in Sources */,
 				1CA2DB5E2AF17597006F5721 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				1CA2DB642AF176B7006F5721 /* SaveTaskToCacheUseCaseTests.swift in Sources */,
+				1CA2DB662AF176D2006F5721 /* DeleteTaskToCacheUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
