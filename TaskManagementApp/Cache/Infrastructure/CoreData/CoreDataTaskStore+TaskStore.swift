@@ -28,7 +28,7 @@ extension CoreDataTaskStore: TaskStore {
     public func update(task: LocalTaskItem, completion: @escaping UpdateCompletion) {
         perform { context in
             completion(UpdateResult {
-                var managedTask = try ManagedTaskItem.findTask(byID: task.id, in: context)
+                let managedTask = try ManagedTaskItem.findTask(byID: task.id, in: context)
                 managedTask?.title = task.title
                 managedTask?.taskDescription = task.description
                 managedTask?.isCompleted = task.isCompleted

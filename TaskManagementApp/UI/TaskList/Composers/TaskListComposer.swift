@@ -9,13 +9,9 @@ import Foundation
 
 public final class TaskListComposer {
     private init() {}
-    public static func compose(taskLoader: TaskLoader,
-                               taskSaver: TaskSaver,
-                               taskDeleter: TaskDeleter,
+    public static func compose(taskLoader: TaskLoader, taskSaver: TaskSaver, taskDeleter: TaskDeleter,
                                onAddTaskButtonPressed: @escaping ()-> Void) -> TaskListView {
-        let viewModel = TaskListViewModel(taskLoader: MainQueueDispatchDecorator(decoratee: taskLoader),
-                                          taskSaver: MainQueueDispatchDecorator(decoratee: taskSaver),
-                                          taskDeleter: MainQueueDispatchDecorator(decoratee: taskDeleter),
+        let viewModel = TaskListViewModel(taskLoader: taskLoader, taskSaver: taskSaver, taskDeleter: taskDeleter,
                                           onAddTaskButtonPressed: onAddTaskButtonPressed)
         let view = TaskListView(viewModel: viewModel)
         return view

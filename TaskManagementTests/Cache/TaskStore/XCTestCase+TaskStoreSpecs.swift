@@ -79,7 +79,7 @@ extension TaskStoreSpecs where Self: XCTestCase {
     }
     
     func assertThatUpdateOnNonEmptyStoreOverridePreviousData(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
-        var item = uniqueLocalTaskItem().local
+        let item = uniqueLocalTaskItem().local
         insert(item, to: sut, file: file, line: line)
 
         let updatedItem = LocalTaskItem(id: item.id, title: "updated title", description: "updated descriptioin", isCompleted: true)
@@ -89,7 +89,7 @@ extension TaskStoreSpecs where Self: XCTestCase {
     }
     
     func assertThatUpdateOnNonEmptyStoreHasNoSideEffectOnUpdateTwice(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
-        var item = uniqueLocalTaskItem().local
+        let item = uniqueLocalTaskItem().local
         insert(item, to: sut, file: file, line: line)
 
         let updatedItem = LocalTaskItem(id: item.id, title: "updated title", description: "updated descriptioin", isCompleted: true)

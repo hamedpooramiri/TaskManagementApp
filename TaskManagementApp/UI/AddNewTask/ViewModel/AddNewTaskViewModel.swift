@@ -15,7 +15,7 @@ public class AddNewTaskViewModel: ObservableObject {
     public let taskTitleMessage: String = "Task Title"
     public let taskDescriptionMessage: String = "Task description"
 
-    @Published public private(set) var isSaving: Bool = false
+    @Published public var isSaving: Bool = false
 
     // MARK: dependencies
     private let taskSaver: TaskSaver

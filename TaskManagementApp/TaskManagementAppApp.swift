@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct TaskManagementAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CompositionRoot()
         }
     }
 }
