@@ -20,10 +20,13 @@ public struct LocalTaskItem: Equatable {
         self.isCompleted = isCompleted
     }
 
+    public var model: TaskItem {
+        TaskItem(id: id, title: title, description: description, isCompleted: isCompleted)
+    }
 }
 
 extension Array where Element == LocalTaskItem {
     func toModel() -> [TaskItem] {
-        map { TaskItem(id: $0.id, title: $0.title, description: $0.description, isCompleted: $0.isCompleted) }
+        map(\.model)
     }
 }

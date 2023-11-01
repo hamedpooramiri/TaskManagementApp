@@ -46,6 +46,19 @@ final class TaskCacheIntegrationTests: XCTestCase {
         expect(sutToPerformLoad, toLoad: [firstTaskItem, lastTaskItem])
     }
 
+    func test_update_updateTaskThatSavedPreviousBySeprateInstance() {
+        let sutToPerformSave = makeSUT()
+        let sutToPerformUpdate = makeSUT()
+        let sutToPerformLoad = makeSUT()
+
+        let taskItem = uniqueLocalTaskItem()
+        let updatedTaskItem = LocalTaskItem(id: taskItem.model.id, title: "new title", description: "new description", isCompleted: true)
+        
+        save(task: taskItem.model, with: sutToPerformSave)
+        update(task: updatedTaskItem.model, with: sutToPerformUpdate)
+        expect(sutToPerformLoad, toLoad: [updatedTaskItem.model])
+    }
+
     //MARK: Helpers
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> LocalTaskLoader {
         let storeURL = storeURLForTest()
@@ -71,11 +84,25 @@ final class TaskCacheIntegrationTests: XCTestCase {
     }
 
     func save(task: TaskItem, with sut: LocalTaskLoader, file: StaticString = #filePath, line: UInt = #line) {
-        let exp = expectation(description: "wait for load from cache")
+        let exp = expectation(description: "wait for save")
         sut.save(task) { result  in
             switch result {
             case .failure(let error):
                 XCTAssertNil(error, "expect to save Data Successfully but got error: \(String(describing: error))", file: file, line: line)
+            default:
+                break
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
+    func update(task: TaskItem, with sut: LocalTaskLoader, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "wait for update")
+        sut.update(task) { result  in
+            switch result {
+            case .failure(let error):
+                XCTAssertNil(error, "expect to update Data Successfully but got error: \(String(describing: error))", file: file, line: line)
             default:
                 break
             }

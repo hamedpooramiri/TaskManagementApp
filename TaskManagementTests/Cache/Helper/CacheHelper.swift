@@ -12,8 +12,7 @@ func uniqueTaskItem() -> TaskItem {
     TaskItem(id: UUID(), title: "any description", description: "any location", isCompleted: false)
 }
 
-func uniqueLocalTaskItem() -> (model: TaskItem, local: LocalTaskItem) {
-    let id = UUID()
+func uniqueLocalTaskItem(id: UUID = UUID()) -> (model: TaskItem, local: LocalTaskItem) {
     return (TaskItem(id: id, title: "any description", description: "any location", isCompleted: false),
             LocalTaskItem(id: id, title: "any description", description: "any location", isCompleted: false))
 }
