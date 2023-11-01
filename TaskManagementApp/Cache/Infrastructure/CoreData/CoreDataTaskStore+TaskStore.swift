@@ -19,12 +19,24 @@ extension CoreDataTaskStore: TaskStore {
     public func insert(task: LocalTaskItem, completion: @escaping InsertCompletion) {
         perform { context in
             completion(InsertResult {
-                let managedTaskItem = ManagedTaskItem.newTask(from: task, in: context)
+                let _ = ManagedTaskItem.newTask(from: task, in: context)
                 try context.save()
             })
         }
     }
-    
+
+    public func update(task: LocalTaskItem, completion: @escaping UpdateCompletion) {
+        perform { context in
+            completion(UpdateResult {
+                var managedTask = try ManagedTaskItem.findTask(byID: task.id, in: context)
+                managedTask?.title = task.title
+                managedTask?.taskDescription = task.description
+                managedTask?.isCompleted = task.isCompleted
+                try context.save()
+            })
+        }
+    }
+
     public func retrieve(completion: @escaping retrieveCompletion) {
         perform { context in
             completion(RetrieveResult(catching: {

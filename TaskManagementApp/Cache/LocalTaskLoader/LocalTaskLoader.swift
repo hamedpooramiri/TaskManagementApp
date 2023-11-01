@@ -29,6 +29,13 @@ extension LocalTaskLoader: TaskSaver {
         }
     }
 
+    public func update(_ task: TaskItem, completion: @escaping (SaveResult) -> Void) {
+        let localTask = LocalTaskItem(id: task.id, title: task.title, description: task.description, isCompleted: task.isCompleted)
+        store.update(task: localTask) { [weak self] updateError in
+            guard self != nil else { return }
+            completion(updateError)
+        }
+    }
 }
 
 extension LocalTaskLoader: TaskLoader {

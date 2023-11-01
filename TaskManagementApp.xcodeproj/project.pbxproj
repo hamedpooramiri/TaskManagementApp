@@ -39,6 +39,11 @@
 		1CA2DB942AF1AED3006F5721 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB932AF1AED3006F5721 /* TaskListView.swift */; };
 		1CA2DB972AF1B5EB006F5721 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB962AF1B5EB006F5721 /* TaskListViewModel.swift */; };
 		1CA2DB9B2AF1D622006F5721 /* AddNewTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB9A2AF1D622006F5721 /* AddNewTaskView.swift */; };
+		1CA2DB9D2AF1DCC7006F5721 /* AddNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB9C2AF1DCC7006F5721 /* AddNewTaskViewModel.swift */; };
+		1CA2DBA02AF1E12B006F5721 /* AddNewTaskComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DB9F2AF1E12B006F5721 /* AddNewTaskComposer.swift */; };
+		1CA2DBA32AF1E312006F5721 /* TaskListComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA22AF1E312006F5721 /* TaskListComposer.swift */; };
+		1CA2DBA52AF1E618006F5721 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA42AF1E618006F5721 /* MainQueueDispatchDecorator.swift */; };
+		1CA2DBA72AF1FB31006F5721 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA62AF1FB31006F5721 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +97,11 @@
 		1CA2DB932AF1AED3006F5721 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		1CA2DB962AF1B5EB006F5721 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 		1CA2DB9A2AF1D622006F5721 /* AddNewTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskView.swift; sourceTree = "<group>"; };
+		1CA2DB9C2AF1DCC7006F5721 /* AddNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewModel.swift; sourceTree = "<group>"; };
+		1CA2DB9F2AF1E12B006F5721 /* AddNewTaskComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskComposer.swift; sourceTree = "<group>"; };
+		1CA2DBA22AF1E312006F5721 /* TaskListComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListComposer.swift; sourceTree = "<group>"; };
+		1CA2DBA42AF1E618006F5721 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
+		1CA2DBA62AF1FB31006F5721 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +306,7 @@
 		1CA2DB902AF1AE43006F5721 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DBA12AF1E2FD006F5721 /* Composers */,
 				1CA2DB952AF1AF4A006F5721 /* ViewModel */,
 				1CA2DB922AF1AEBB006F5721 /* View */,
 			);
@@ -305,6 +316,7 @@
 		1CA2DB912AF1AE76006F5721 /* AddNewTask */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DB9E2AF1E0FF006F5721 /* Composers */,
 				1CA2DB992AF1D435006F5721 /* ViewModel */,
 				1CA2DB982AF1D430006F5721 /* View */,
 			);
@@ -331,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB9A2AF1D622006F5721 /* AddNewTaskView.swift */,
+				1CA2DBA62AF1FB31006F5721 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -338,8 +351,26 @@
 		1CA2DB992AF1D435006F5721 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1CA2DB9C2AF1DCC7006F5721 /* AddNewTaskViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1CA2DB9E2AF1E0FF006F5721 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DB9F2AF1E12B006F5721 /* AddNewTaskComposer.swift */,
+			);
+			path = Composers;
+			sourceTree = "<group>";
+		};
+		1CA2DBA12AF1E2FD006F5721 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				1CA2DBA22AF1E312006F5721 /* TaskListComposer.swift */,
+				1CA2DBA42AF1E618006F5721 /* MainQueueDispatchDecorator.swift */,
+			);
+			path = Composers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,14 +504,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CA2DB232AF160EA006F5721 /* ContentView.swift in Sources */,
+				1CA2DBA52AF1E618006F5721 /* MainQueueDispatchDecorator.swift in Sources */,
 				1CA2DB9B2AF1D622006F5721 /* AddNewTaskView.swift in Sources */,
 				1CA2DB742AF18D76006F5721 /* CoreDataTaskStore.swift in Sources */,
 				1CA2DB942AF1AED3006F5721 /* TaskListView.swift in Sources */,
+				1CA2DB9D2AF1DCC7006F5721 /* AddNewTaskViewModel.swift in Sources */,
 				1CA2DB322AF164CF006F5721 /* TaskLoader.swift in Sources */,
 				1CA2DB3B2AF166E3006F5721 /* TaskStore.swift in Sources */,
 				1CA2DB782AF18EBE006F5721 /* CoreDataTaskStore+TaskStore.swift in Sources */,
+				1CA2DBA32AF1E312006F5721 /* TaskListComposer.swift in Sources */,
 				1CA2DB342AF1654D006F5721 /* TaskSaver.swift in Sources */,
 				1CA2DB762AF18DEF006F5721 /* CoreDataHelpers.swift in Sources */,
+				1CA2DBA72AF1FB31006F5721 /* LoadingView.swift in Sources */,
+				1CA2DBA02AF1E12B006F5721 /* AddNewTaskComposer.swift in Sources */,
 				1CA2DB412AF17007006F5721 /* TaskDeleter.swift in Sources */,
 				1CA2DB722AF18A24006F5721 /* ManagedTaskItem.swift in Sources */,
 				1CA2DB302AF1640E006F5721 /* TaskItem.swift in Sources */,

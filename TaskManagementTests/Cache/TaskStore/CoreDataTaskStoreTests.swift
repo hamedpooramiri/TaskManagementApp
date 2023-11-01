@@ -40,6 +40,26 @@ final class CoreDataTaskStoreTests: XCTestCase, TaskStoreSpecs {
         assertThatInsertToNonEmptyStoreAddDataToStore(on: sut)
     }
     
+    func test_update_emptyStore_doNoting() {
+        let sut = makeSUT()
+        assertThatUpdateOnEmptyStoreDoNoting(on: sut)
+    }
+    
+    func test_update_emptyStore_hasNoSideEffectOnUpdateTwice() {
+        let sut = makeSUT()
+        assertThatUpdateOnEmptyStoreHasNoSideEffectOnUpdateTwice(on: sut)
+    }
+    
+    func test_update_nonEmptyStore_overridePreviousData() {
+        let sut = makeSUT()
+        assertThatUpdateOnNonEmptyStoreOverridePreviousData(on: sut)
+    }
+    
+    func test_update_nonEmptyStore_hasNoSideEffectOnUpdateTwice() {
+        let sut = makeSUT()
+        assertThatUpdateOnNonEmptyStoreHasNoSideEffectOnUpdateTwice(on: sut)
+    }
+
     func test_delete_emptyStore_doNoting() {
         let sut = makeSUT()
         assertThatDeleteFromEmptyStoreDoNoting(on: sut)

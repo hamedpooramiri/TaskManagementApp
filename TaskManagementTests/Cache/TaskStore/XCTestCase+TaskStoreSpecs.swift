@@ -67,6 +67,40 @@ extension TaskStoreSpecs where Self: XCTestCase {
         expect(sut, toCompleteRetrieveWith: .success(nil), file: file, line: line)
     }
 
+    func assertThatUpdateOnEmptyStoreDoNoting(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
+        update(uniqueLocalTaskItem().local, to: sut)
+        expect(sut, toCompleteRetrieveWith: .success(nil), file: file, line: line)
+    }
+
+    func assertThatUpdateOnEmptyStoreHasNoSideEffectOnUpdateTwice(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
+        update(uniqueLocalTaskItem().local, to: sut, file: file, line: line)
+        update(uniqueLocalTaskItem().local, to: sut, file: file, line: line)
+        expect(sut, toCompleteRetrieveWith: .success(nil), file: file, line: line)
+    }
+    
+    func assertThatUpdateOnNonEmptyStoreOverridePreviousData(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
+        var item = uniqueLocalTaskItem().local
+        insert(item, to: sut, file: file, line: line)
+
+        let updatedItem = LocalTaskItem(id: item.id, title: "updated title", description: "updated descriptioin", isCompleted: true)
+        update(updatedItem, to: sut)
+
+        expect(sut, toCompleteRetrieveWith: .success([updatedItem]), file: file, line: line)
+    }
+    
+    func assertThatUpdateOnNonEmptyStoreHasNoSideEffectOnUpdateTwice(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
+        var item = uniqueLocalTaskItem().local
+        insert(item, to: sut, file: file, line: line)
+
+        let updatedItem = LocalTaskItem(id: item.id, title: "updated title", description: "updated descriptioin", isCompleted: true)
+        update(updatedItem, to: sut)
+
+        let latestUpdatedItem = LocalTaskItem(id: item.id, title: "latest updated title", description: "latest updated descriptioin", isCompleted: false)
+        update(latestUpdatedItem, to: sut)
+
+        expect(sut, toCompleteRetrieveWith: .success([latestUpdatedItem]), file: file, line: line)
+    }
+
     func assertThatDeleteFromEmptyStoreDoNoting(on sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) {
         let deletionError = delete(uniqueLocalTaskItem().local, from: sut)
         XCTAssertNil(deletionError, "expect to have no Deletion error", file: file, line: line)
@@ -160,6 +194,23 @@ extension TaskStoreSpecs where Self: XCTestCase {
         return capturedError
     }
     
+    @discardableResult
+    func update(_ task: LocalTaskItem, to sut: TaskStore, file: StaticString = #filePath, line: UInt = #line) -> Error? {
+        let exp = expectation(description: "wait to update")
+        var capturedError: Error?
+        sut.update(task: task) { result in
+            switch result {
+            case .failure(let error):
+                capturedError = error
+            default:
+                break
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+        return capturedError
+    }
+
     @discardableResult
     func delete(_ task: LocalTaskItem, from sut: TaskStore) -> Error? {
         let exp = expectation(description: "wating for deletion")

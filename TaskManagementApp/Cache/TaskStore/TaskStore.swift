@@ -15,10 +15,14 @@ public protocol TaskStore {
     typealias InsertResult = Result<Void, Error>
     typealias InsertCompletion = (InsertResult) -> Void
 
+    typealias UpdateResult = Result<Void, Error>
+    typealias UpdateCompletion = (UpdateResult) -> Void
+
     typealias RetrieveResult = Result<[LocalTaskItem]?, Error>
     typealias retrieveCompletion = (RetrieveResult) -> Void
 
     func delete(task: LocalTaskItem, completion: @escaping DeleteCompletion)
     func insert(task: LocalTaskItem, completion: @escaping InsertCompletion)
+    func update(task: LocalTaskItem, completion: @escaping UpdateCompletion)
     func retrieve(completion: @escaping retrieveCompletion)
 }

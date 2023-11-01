@@ -74,5 +74,4 @@ final class LoadTaskFromCacheUseCase: XCTestCase {
         wait(for: [exp])
     }
 
-
 }

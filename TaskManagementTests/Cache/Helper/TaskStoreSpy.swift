@@ -13,6 +13,7 @@ class TaskStoreSpy: TaskStore {
     enum ReceivedMessage: Equatable {
         case deleteTask
         case insertTask(task: LocalTaskItem)
+        case updateTask(task: LocalTaskItem)
         case retrieve
     }
     
@@ -21,8 +22,8 @@ class TaskStoreSpy: TaskStore {
     private var capturedDeleteCompletions: [DeleteCompletion] = []
     private var capturedInsertionCompletions: [InsertCompletion] = []
     private var capturedRetrieveCompletions: [retrieveCompletion] = []
-    
-    
+    private var capturedUpdateCompletions: [UpdateCompletion] = []
+
     
     func delete(task: LocalTaskItem, completion: @escaping DeleteCompletion) {
         receivedMessages.append(.deleteTask)
@@ -34,6 +35,11 @@ class TaskStoreSpy: TaskStore {
         receivedMessages.append(.insertTask(task: task))
     }
     
+    func update(task: LocalTaskItem, completion: @escaping UpdateCompletion) {
+        capturedUpdateCompletions.append(completion)
+        receivedMessages.append(.updateTask(task: task))
+    }
+
     func retrieve(completion: @escaping retrieveCompletion) {
         capturedRetrieveCompletions.append(completion)
         receivedMessages.append(.retrieve)
@@ -56,6 +62,14 @@ class TaskStoreSpy: TaskStore {
         capturedInsertionCompletions[index](.success(()))
     }
 
+    func completeUpdate(with error: Error, at index: Int = 0) {
+        capturedUpdateCompletions[index](.failure(error))
+    }
+    
+    func completeUpdateSuccessfully(at index: Int = 0) {
+        capturedUpdateCompletions[index](.success(()))
+    }
+    
     func completeRetrieve(with error: Error, at index: Int = 0) {
         capturedRetrieveCompletions[index](.failure(error))
     }

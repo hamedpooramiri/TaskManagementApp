@@ -10,29 +10,38 @@ import Foundation
 /// any FeedStore concrete implementation Tests must implement this Protocol,
 /// provide structure for TestCases
 protocol TaskStoreSpecs {
-
-     func test_retrieve_emptyStore_deliverEmpty()
-
-     func test_retrieve_emptyStore_hasNoSideEffectRetrieveTwice()
-
-     func test_retrieve_nonEmptyStore_deliverData()
-
-     func test_retrieve_nonEmptyStore_hasNoSideEffectOnRetrieveTwice()
-
-
-     func test_insert_toEmptyStore_addDataToStore()
-
-     func test_insert_toNonEmptyStore_addDataToStore()
-
-
-     func test_delete_emptyStore_doNoting()
-
-     func test_delete_emptyStore_hasNoSideEffectOnStore()
-
-     func test_delete_nonEmptyStore_removeDataFromStore()
-
     
-     func test_storeSideEffects_runSerially()
+    func test_retrieve_emptyStore_deliverEmpty()
+    
+    func test_retrieve_emptyStore_hasNoSideEffectRetrieveTwice()
+    
+    func test_retrieve_nonEmptyStore_deliverData()
+    
+    func test_retrieve_nonEmptyStore_hasNoSideEffectOnRetrieveTwice()
+
+
+    func test_insert_toEmptyStore_addDataToStore()
+    
+    func test_insert_toNonEmptyStore_addDataToStore()
+    
+    
+    func test_delete_emptyStore_doNoting()
+    
+    func test_delete_emptyStore_hasNoSideEffectOnStore()
+    
+    func test_delete_nonEmptyStore_removeDataFromStore()
+
+
+    func test_update_emptyStore_doNoting()
+    
+    func test_update_emptyStore_hasNoSideEffectOnUpdateTwice()
+    
+    func test_update_nonEmptyStore_overridePreviousData()
+    
+    func test_update_nonEmptyStore_hasNoSideEffectOnUpdateTwice()
+
+
+    func test_storeSideEffects_runSerially()
 }
 
 protocol FailableRetrieveTaskStoreSpecs: TaskStoreSpecs {
