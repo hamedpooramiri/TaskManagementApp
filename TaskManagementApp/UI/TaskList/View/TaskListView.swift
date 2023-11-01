@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct TaskListView: View {
+public struct TaskListView: View {
 
-    @ObservedObject var viewModel: TaskListViewModel
+    @ObservedObject private var viewModel: TaskListViewModel
 
-    init(viewModel: TaskListViewModel) {
+    public init(viewModel: TaskListViewModel) {
         self.viewModel = viewModel
     }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             titleView()
             segmentView()
@@ -26,8 +26,12 @@ struct TaskListView: View {
             addButtonView()
         }.onChange(of: viewModel.taskType) { newValue in
             viewModel.taskTypeChangeAction(taskType: newValue)
+        }.onAppear {
+            viewModel.onViewAppear()
         }
     }
+
+    // MARK: View Builders
 
     private func titleView() -> some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -39,7 +43,7 @@ struct TaskListView: View {
     }
 
     private func segmentView() -> some View {
-        Picker("What is your favorite color?", selection: $viewModel.taskType) {
+        Picker("", selection: $viewModel.taskType) {
             ForEach(TaskListViewModel.TaskType.allCases) {  taskType in
                 Text(taskType.rawValue).tag(taskType.id)
             }
@@ -58,18 +62,18 @@ struct TaskListView: View {
 
     private func makeListView() -> some View {
         Group {
-            if viewModel.taskItems.isEmpty {
-                Text("No tasks found!!!")
+            if viewModel.filteredTaskItems.isEmpty {
+                Text(viewModel.noTaskFoundTitle)
                     .font(.system(size: 16))
                     .fontWeight(.light)
             } else {
-                List(viewModel.taskItems) { task in
+                List(viewModel.filteredTaskItems) { task in
                     rowView(for: task)
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 viewModel.deleteTaskButtonPressed(for: task)
                             } label: {
-                                Label("Delete", systemImage: "trash")
+                                Label(viewModel.deleteTitle, systemImage: "trash")
                             }
                         }
                 }
@@ -122,7 +126,7 @@ struct TaskListView: View {
             viewModel.addTaskButtonPressed()
         } label: {
             Label {
-                Text("Add Task")
+                Text(viewModel.addTaskTitle)
             } icon: {
                 Image(systemName: "plus.app.fill")
             }
@@ -148,6 +152,7 @@ struct TaskListView: View {
 
 struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskListView(viewModel: TaskListViewModel())
+//        TaskListView(viewModel: TaskListViewModel())
+        EmptyView()
     }
 }

@@ -44,6 +44,7 @@
 		1CA2DBA32AF1E312006F5721 /* TaskListComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA22AF1E312006F5721 /* TaskListComposer.swift */; };
 		1CA2DBA52AF1E618006F5721 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA42AF1E618006F5721 /* MainQueueDispatchDecorator.swift */; };
 		1CA2DBA72AF1FB31006F5721 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBA62AF1FB31006F5721 /* LoadingView.swift */; };
+		1CA2DBAB2AF27F2C006F5721 /* TaskItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2DBAA2AF27F2C006F5721 /* TaskItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		1CA2DBA22AF1E312006F5721 /* TaskListComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListComposer.swift; sourceTree = "<group>"; };
 		1CA2DBA42AF1E618006F5721 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		1CA2DBA62AF1FB31006F5721 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		1CA2DBAA2AF27F2C006F5721 /* TaskItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA2DB962AF1B5EB006F5721 /* TaskListViewModel.swift */,
+				1CA2DBAA2AF27F2C006F5721 /* TaskItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA2DBAB2AF27F2C006F5721 /* TaskItemViewModel.swift in Sources */,
 				1CA2DB232AF160EA006F5721 /* ContentView.swift in Sources */,
 				1CA2DBA52AF1E618006F5721 /* MainQueueDispatchDecorator.swift in Sources */,
 				1CA2DB9B2AF1D622006F5721 /* AddNewTaskView.swift in Sources */,
